@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from article.models import Article
+from django.http import Http404
 from datetime import datetime
 
 # Create your views here.
@@ -9,9 +10,11 @@ def home(request):
     post_list = Article.objects.all()  #获取全部的Article对象
     return render(request, 'home.html', {'post_list' : post_list})
 
-def detail(request, my_args):
-    post = Article.objects.all()[int(my_args)]
-    str = ("title = %s, category = %s, date_time = %s, content = %s"
-        % (post.title, post.category, post.date, post.content))
-    return HttpResponse(str)
+def detail(request, id):
+    try:
+        post = Article.objects.get(id=str(id))
+    except Article.DoesNotExist:
+        raise Http404
+
+    return render(request,'post.html',{'post':post})
 # Create your views here.
