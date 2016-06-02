@@ -8,7 +8,24 @@ from datetime import datetime
 # Create your views here.
 def home(request):
     post_list = Article.objects.all()  #获取全部的Article对象
-    return render(request, 'home.html', {'post_list' : post_list})
+    return render(request, 'index.html', {'post_list' : post_list})
+def mark(request):
+    return render(request, 'mark.html')
+# def home(request):
+#     post_list = Article.objects.all()  #获取全部的Article对象
+#     return render(request, 'index.html')
+# def home(request):
+#     post_list = Article.objects.all()  #获取全部的Article对象
+#     return render(request, 'index.html')
+# def home(request):
+#     post_list = Article.objects.all()  #获取全部的Article对象
+#     return render(request, 'index.html')
+# def home(request):
+#     post_list = Article.objects.all()  #获取全部的Article对象
+#     return render(request, 'index.html')
+# def home(request):
+#     post_list = Article.objects.all()  #获取全部的Article对象
+#     return render(request, 'index.html')
 
 def detail(request, id):
     try:

@@ -24,5 +24,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'article.views.home',name='home'),
+    url(r'^index/', 'article.views.home',name='home'),
+    url(r'^mark/', 'article.views.mark',name='mark'),
     url(r'^(?P<id>\d+)/$', 'article.views.detail', name='detail'),
 )
